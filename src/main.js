@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -7,20 +7,18 @@ import Toast, { POSITION } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 import axios from './axios'
 
-Vue.config.productionTip = false
-
-Vue.use(Toast, {
-  position: POSITION.TOP_CENTER,
-  timeout: 2000
-})
-
 const newVue = () => {
-  new Vue({
-    router,
-    store,
-    vuetify,
-    render: h => h(App)
-  }).$mount('#app')
+  const app = createApp(App)
+
+  app.use(router)
+  app.use(store)
+  app.use(vuetify)
+  app.use(Toast, {
+    position: POSITION.TOP_CENTER,
+    timeout: 2000
+  })
+
+  app.mount('#app')
 }
 
 try {

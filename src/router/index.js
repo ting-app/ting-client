@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ConfirmRegistrationView from '../views/ConfirmRegistrationView.vue'
@@ -12,8 +11,6 @@ import TingListView from '../views/admin/TingListView.vue'
 import SettingsView from '../views/admin/SettingsView.vue'
 import TingPracticeListView from '../views/admin/TingPracticeListView.vue'
 import store from '../store'
-
-Vue.use(VueRouter)
 
 const routes = [
   {
@@ -88,7 +85,8 @@ const routes = [
   }
 ]
 
-const router = new VueRouter({
+const router = createRouter({
+  history: createWebHistory(),
   routes
 })
 
